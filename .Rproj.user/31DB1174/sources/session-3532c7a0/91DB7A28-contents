@@ -1,0 +1,20 @@
+install.packages("agricolae")
+
+# Instalar y cargar el paquete agricolae
+if(!require(agricolae)) install.packages("agricolae")
+library(agricolae)
+
+# Definir las dosis de fertilización nitrogenada
+dosis <- c(50, 100, 150)  # Dosis de fertilización en kg/ha
+
+# Definir el número de repeticiones
+repeticiones <- 5
+
+# Generar el diseño completamente randomizado (CRD)
+diseño_crd <- design.crd(trt = dosis, r = repeticiones, seed = 123)
+ 
+# Mostrar el diseño experimental
+print(diseño_crd$book)
+
+# Si deseas guardar el diseño en un archivo CSV
+write.csv(diseño_crd$book, "Diseño_CRD_Fertilizacion.csv", row.names = FALSE)
